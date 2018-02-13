@@ -59,8 +59,11 @@ public class MainActivity extends AppCompatActivity {
 
         Uri addressUri = builder.build();
 
+        //Intent intent = new Intent(Intent.ACTION_VIEW);
+        //intent.setData(addressUri);
+
         // TODO (7) Replace the Toast with a call to showMap, passing in the Uri from the previous step
-        Toast.makeText(this, "TODO: Open a map when this button is clicked", Toast.LENGTH_SHORT).show();
+        showMap(addressUri);
     }
 
     /**
@@ -124,10 +127,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void showMap(Uri webPage) {
         // TODO (2) Create an Intent with action type, Intent.ACTION_VIEW
+        //COMPLETE
+        Intent intent = new Intent(Intent.ACTION_VIEW);
 
         // TODO (3) Set the data of the Intent to the Uri passed into this method
+        //COMPLETE
+        intent.setData(webPage);
 
         // TODO (4) Verify that this Intent can be launched and then call startActivity
+
+        if(intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }
     }
 
 }
